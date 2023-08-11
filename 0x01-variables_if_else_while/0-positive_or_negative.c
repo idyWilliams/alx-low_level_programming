@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 /**
- * main - Entry point 
+ * main - Entry point
  * Description - Generates a random number and prints its sign.
  * Return: Always 0 (Success)
  */
