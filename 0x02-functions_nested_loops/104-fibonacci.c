@@ -1,39 +1,33 @@
 #include <stdio.h>
 
 /**
- * main - Prints a sequence of Fibonacci numbers.
+ * main - Prints the first 98 Fibonacci numbers.
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	unsigned long before = 1, after = 2;
-	unsigned long billion = 1000000000;
-	unsigned long before1, before2, after1, after2;
+	unsigned long int i, bef1 = 1, bef2 = 2, aft1, aft2, sum = 2;
 
-	printf("%lu", before);
+	printf("%lu, %lu", bef1, bef2);
 
-	for (unsigned long i = 1; i < 91; i++)
+	for (i = 3; i <= 98; i++)
 	{
-		printf(", %lu", after);
-		after += before;
-		before = after - before;
+		aft1 = bef1 + bef2;
+		aft2 = aft1 / 1000000000;
+		aft1 %= 1000000000;
+		bef1 = bef2;
+		bef2 = aft1;
+
+		if (aft2 != 0)
+			printf(", %lu%09lu", aft2, aft1);
+		else
+			printf(", %lu", aft1);
+
+		sum += aft2 * 1000000000 + aft1;
 	}
 
-	before1 = before / billion;
-	before2 = before % billion;
-	after1 = after / billion;
-	after2 = after % billion;
+	printf("\nSum: %lu\n", sum);
 
-	for (unsigned long i = 92; i < 99; ++i)
-	{
-		printf(", %lu", after1 + (after2 / billion));
-		printf("%lu", after2 % billion);
-		after1 = after1 + before1;
-		before1 = after1 - before1;
-		after2 = after2 + before2;
-		before2 = after2 - before2;
-	}
-	printf("\n");
 	return (0);
 }
